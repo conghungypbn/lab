@@ -11,6 +11,7 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "clear": "^0.1.0",
+    "cli-progress": "^2.1.1",
     "figlet": "^1.2.1"
   },
   "devDependencies": {
