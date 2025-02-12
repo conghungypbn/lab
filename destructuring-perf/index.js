@@ -7,8 +7,8 @@ const bar = new _cliProgress.Bar({}, _cliProgress.Presets.shades_classic)
 const normalParams = (a, b, c, d, e, f) => a + b + c + d + e + f
 const normalRestParams = (...a) => a[0] + a[1] + a[2] + a[3] + a[4] + a[5]
 const objectParams = (o) => o.a + o.b + o.c + o.d + o.e + o.f
-const desctructObjectParams = ({ a, b, c, d, e, f }) => a + b + c + d + e + f
-const desctructArrayParams = ([a, b, c, d, e, f]) => a + b + c + d + e + f
+const destructObjectParams = ({ a, b, c, d, e, f }) => a + b + c + d + e + f
+const destructArrayParams = ([a, b, c, d, e, f]) => a + b + c + d + e + f
 const arrayParams = (a) => a[0] + a[1] + a[2] + a[3] + a[4] + a[5]
 
 const numOfTries = 1e8
@@ -40,14 +40,14 @@ for (let i = 1; i <= numOfTries; i++) {
 bar.stop()
 l`{${COLOR[1]} ${objectParams.name} take: ${timer.end(objectParams.name)}} seconds.`
 
-timer.begin(desctructObjectParams.name)
+timer.begin(destructObjectParams.name)
 bar.start(100, 0)
 for (let i = 1; i <= numOfTries; i++) {
-  desctructObjectParams({ a: i, b: i, c: i, d: i, e: i, f: i })
+  destructObjectParams({ a: i, b: i, c: i, d: i, e: i, f: i })
   i % 1e6 === 0 && bar.update(Math.floor(i / 1e6))
 }
 bar.stop()
-l`{${COLOR[1]} ${desctructObjectParams.name} take: ${timer.end(desctructObjectParams.name)}} seconds.`
+l`{${COLOR[1]} ${destructObjectParams.name} take: ${timer.end(destructObjectParams.name)}} seconds.`
 
 timer.begin(arrayParams.name)
 bar.start(100, 0)
@@ -58,11 +58,11 @@ for (let i = 1; i <= numOfTries; i++) {
 bar.stop()
 l`{${COLOR[2]} ${arrayParams.name} take: ${timer.end(arrayParams.name)}} seconds.`
 
-timer.begin(desctructArrayParams.name)
+timer.begin(destructArrayParams.name)
 bar.start(100, 0)
 for (let i = 1; i <= numOfTries; i++) {
-  desctructArrayParams([i, i, i, i, i, i])
+  destructArrayParams([i, i, i, i, i, i])
   i % 1e6 === 0 && bar.update(Math.floor(i / 1e6))
 }
 bar.stop()
-l`{${COLOR[2]} ${desctructArrayParams.name} take: ${timer.end(desctructArrayParams.name)}} seconds.`
+l`{${COLOR[2]} ${destructArrayParams.name} take: ${timer.end(destructArrayParams.name)}} seconds.`
